@@ -1,12 +1,12 @@
 module.exports = {
   content: [
     './Pages//*.cshtml',
-    './Views//*.cshtml'
+    './Views/**/*.cshtml'
   ],
   theme: {
     extend: {
         colors: {
-            'primary': '#3490dc',
+            'primary': '#731B00',
             'secondary': '#ffed4a',
             'font-color': '#e3342f',
         },
