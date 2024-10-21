@@ -1,8 +1,49 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Banner -->
+<div class="relative w-screen">
+    <img src="@Url.Content("images/1200px-Scrabble_game_in_progress.jpg")" alt="Homepage banner" class="w-screen h-25">
+    <div class="absolute inset-0 bg-black opacity-50 blur-sm"></div> <!-- Overlay for darkening and blurring -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center"> <!-- Centered text -->
+        <h1 class="text-5xl font-bold mb-2">Welcome to Avans Board Game Night!</h1>
+        <p class="text-2xl">Let's find more that brings us together.</p> <!-- Subtitle or additional text -->
+    </div>
 </div>
+
+
+<!-- Section -->
+<section class="bg-white">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Let's find more that brings us together.</h2>
+            <p class="mb-8 font-light text-gray-500 sm:text-xl">Flowbite helps you connect with friends, family, and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups, Watch, and Marketplace.</p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                <img src="path-to-image.jpg" alt="Image description" class="w-full h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-white">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Let's find more that brings us together.</h2>
+            <p class="mb-8 font-light text-gray-500 sm:text-xl">Flowbite helps you connect with friends, family, and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups, Watch, and Marketplace.</p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                <img src="path-to-image.jpg" alt="Image description" class="w-full h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-white align-content-end">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <div class="max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Let's find more that brings us together.</h2>
+            <p class="mb-8 font-light text-gray-500 sm:text-xl">Flowbite helps you connect with friends, family, and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups, Watch, and Marketplace.</p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                <img src="path-to-image.jpg" alt="Image description" class="w-full h-auto">
+            </div>
+        </div>
+    </div>
+</section>

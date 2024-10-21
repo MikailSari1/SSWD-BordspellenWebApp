@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Profile Page";
+}
+
+@model Domain.User
+
+<div class="max-w-lg mx-auto p-8 bg-white shadow-lg rounded-lg">
+    <div class="text-center space-y-4">
+        <h1 class="text-4xl font-extrabold text-gray-900">Welcome</h1>
+        <p class="text-lg text-gray-600 font-medium">@Model.Name</p>
+        <p class="text-sm text-gray-500">@Model.Email</p>
+        <p class="text-sm text-gray-500">@Model.Address.Street</p>
+    </div>
+</div>
+ 
