@@ -1,5 +1,77 @@
 ﻿@{
-ViewData["Title"] = "Organize Board Game Night Page";
+    ViewData["Title"] = "Organize Board Game Night Page";
 }
 
+<style>
+    .font-color {
+        color: #e3342f;
+    }
 
+    .font-color-2 {
+        color: #0a5700;
+    }
+
+    .accessible-text {
+        font-size: 1.5rem; /* Larger text for readability */
+        line-height: 1.8; /* More spacing for easier reading */
+        font-weight: 500; /* Medium weight for contrast */
+    }
+</style>
+
+<!-- Main container: centered form -->
+<div class="flex items-center justify-center min-h-screen bg-gray-50">
+    <!-- Form Container -->
+    <div class="w-full max-w-xl p-8 bg-white shadow-lg rounded-lg px-40">
+        <!-- Title -->
+        <h2 class="text-4xl font-extrabold font-color-2 mb-8 text-center">
+            Organize Your Game Night
+        </h2>
+
+        <!-- Form -->
+        <form id="gameNightForm" method="post" onsubmit="return showSuccessMessage();">
+            <!-- Organizer's Name -->
+            <div class="mb-6">
+                <label for="organizer" class="block text-3xl font-medium font-color">Organizer</label>
+                <input type="text" id="organizer" name="organizer" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" placeholder="Enter your name" required>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-6">
+                <label for="address" class="block text-3xl font-medium font-color">Address</label>
+                <input type="text" id="address" name="address" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" placeholder="Enter address" required>
+            </div>
+
+            <!-- Max Participants -->
+            <div class="mb-6">
+                <label for="maxParticipants" class="block text-3xl font-medium font-color">Max Participants</label>
+                <input type="number" id="maxParticipants" name="maxParticipants" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" placeholder="Enter max participants" required>
+            </div>
+
+            <!-- Date & Time -->
+            <div class="mb-6">
+                <label for="dateTime" class="block text-3xl font-medium font-color">Date & Time</label>
+                <input type="datetime-local" id="dateTime" name="dateTime" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" required>
+            </div>
+
+            <!-- Snacks -->
+            <div class="mb-6">
+                <label for="snacks" class="block text-3xl font-medium font-color">Snacks</label>
+                <textarea id="snacks" name="snacks" rows="6" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" placeholder="Enter snacks details"></textarea>
+            </div>
+
+           <!-- Submit Button -->
+            <div class="mb-6">
+                <button type="submit" class="w-full p-4 bg-black text-white font-semibold text-3xl rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800" onclick="showMessage()"> 
+                     Organize Game Night
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript to handle the popup -->
+<script>
+function showMessage() {
+    alert('You have succesfully organized a Game Night!');
+  }
+</script>

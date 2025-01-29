@@ -4,12 +4,75 @@
 
 @model Domain.User
 
-<div class="max-w-lg mx-auto p-8 bg-white shadow-lg rounded-lg">
-    <div class="text-center space-y-4">
-        <h1 class="text-4xl font-extrabold text-gray-900">Welcome</h1>
-        <p class="text-lg text-gray-600 font-medium">@Model.Name</p>
-        <p class="text-sm text-gray-500">@Model.Email</p>
-        <p class="text-sm text-gray-500">@Model.Address.Street</p>
+
+<style>
+    .font-color {
+        color: #e3342f;
+    }
+
+    .font-color-2 {
+        color: #0a5700;
+    }
+
+    .accessible-text {
+        font-size: 1.5rem; /* Larger text for readability */
+        line-height: 1.8; /* More spacing for easier reading */
+        font-weight: 500; /* Medium weight for contrast */
+    }
+</style>
+
+<!-- Main container: centered form -->
+<div class="flex items-center justify-center min-h-screen bg-gray-50">
+
+    <!-- Form Container -->
+    <div class="w-full max-w-xl p-8 bg-white shadow-lg rounded-lg px-40">
+        
+        <!-- Title -->
+        <h2 class="text-4xl font-extrabold font-color-2 mb-8 text-center">
+            Profile Page
+        </h2>
+
+        <!-- Profile Form -->
+        <form action="#" method="post" class="space-y-8"> <!-- Increased space between form elements -->
+            <!-- Full Name -->
+            <div class="mb-8"> <!-- Increased margin-bottom -->
+                <label for="name" class="block text-3xl font-medium font-color">Full Name</label>
+                <input type="text" id="name" name="name" value="@Model.Name" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" required>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-8"> <!-- Increased margin-bottom -->
+                <label for="email" class="block text-3xl font-medium font-color">Email Address</label>
+                <input type="email" id="email" name="email" value="@Model.Email" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" required>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-8"> <!-- Increased margin-bottom -->
+                <label for="address" class="block text-3xl font-medium font-color">Address</label>
+                <input type="text" id="address" name="address" value="@Model.Address.Street" class="mt-4 p-4 w-full text-2xl border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e3342f]" required>
+            </div>
+
+            <!-- Save Button -->
+            <div class="mb-8"> <!-- Increased margin-bottom -->
+                <button type="submit" class="w-full p-4 bg-black text-white font-semibold text-3xl rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800" onclick="showMessage()">
+                    Save Changes
+                </button>
+            </div>
+        </form>
     </div>
 </div>
- 
+
+<!-- JavaScript to handle the popup -->
+<script>
+    function showMessage() {
+        alert('You have successfully updated your details!');
+    }
+
+    function closeModal() {
+        // Hide the success modal
+        document.getElementById('successModal').classList.add('hidden');
+
+        // Optionally, show the form again if needed
+        document.querySelector('form').classList.remove('hidden');
+    }
+</script>
