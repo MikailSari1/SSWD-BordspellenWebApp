@@ -32,7 +32,10 @@
 
         - name: Install NPM dependencies (Web)
           working-directory: ./Web
-          run: npm install
+          run: |
+            npm config set registry https://registry.npmjs.org/
+            npm cache clean --force
+            npm install
 
         - name: Restore dependencies
           run: dotnet restore
