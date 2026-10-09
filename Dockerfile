@@ -1,0 +1,37 @@
+﻿# 1. Build stage (bevat .NET SDK Ã©n Node.js voor Tailwind)                                                                                                                                                  
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build                                                                                                                                                              
+WORKDIR /src                                                                                                                                                                                                
+                                                                                                                                                                                                            
+# Installeer Node.js & npm voor de Tailwind build                                                                                                                                                           
+RUN apt-get update && apt-get install -y nodejs npm                                                                                                                                                         
+                                                                                                                                                                                                            
+# Kopieer projectbestanden en restore dependencies                                                                                                                                                          
+COPY ["SSWD-BordspellenWebApp.sln", "./"]                                                                                                                                                                         
+COPY ["Domain/Domain.csproj", "Domain/"]                                                                                                                                                                    
+COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]                                                                                                                                            
+COPY ["API/API.csproj", "API/"]                                                                                                                                                                             
+COPY ["Web/Web.csproj", "Web/"]                                                                                                                                                                             
+COPY ["UnitTests/UnitTests.csproj", "UnitTests/"]                                                                                                                                                                       
+                                                                                                                                                                                                            
+RUN dotnet restore "Web/Web.csproj"                                                                                                                                                                         
+                                                                                                                                                                                                            
+# Kopieer de rest van de broncode                                                                                                                                                                           
+COPY . .                                                                                                                                                                                                    
+                                                                                                                                                                                                            
+# Installeer npm packages in de Web map voor Tailwind                                                                                                                                                       
+WORKDIR /src/Web                                                                                                                                                                                            
+RUN npm install                                                                                                                                                                                             
+                                                                                                                                                                                                            
+# Publiceer de Web applicatie                                                                                                                                                                               
+WORKDIR /src                                                                                                                                                                                                
+RUN dotnet publish "Web/Web.csproj" -c Release -o /app/publish /p:UseAppHost=false                                                                                                                          
+                                                                                                                                                                                                            
+# 2. Runtime stage (lichtgewicht .NET ASP.NET runtime)                                                                                                                                                      
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final                                                                                                                                                           
+WORKDIR /app                                                                                                                                                                                                
+COPY --from=build /app/publish .                                                                                                                                                                            
+                                                                                                                                                                                                            
+EXPOSE 8080                                                                                                                                                                                                 
+ENV ASPNETCORE_URLS=http://+:8080                                                                                                                                                                           
+                                                                                                                                                                                                            
+ENTRYPOINT ["dotnet", "Web.dll"]  
